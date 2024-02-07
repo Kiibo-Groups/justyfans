@@ -9,9 +9,35 @@
   <meta name="description" content="@yield('description_custom')@if(!Request::route()->named('seo') && !Request::route()->named('profile')){{trans('seo.description')}}@endif">
   <meta name="keywords" content="@yield('keywords_custom'){{ trans('seo.keywords') }}" />
   <meta name="theme-color" content="{{ auth()->check() && auth()->user()->dark_mode == 'on' ? '#303030' : $settings->color_default }}">
-  <title>{{ auth()->check() && User::notificationsCount() ? '('.User::notificationsCount().') ' : '' }}@section('title')@show {{$settings->title.' - '.__('seo.slogan')}}</title>
+  <title>
+    {{ auth()->check() && User::notificationsCount() ? '('.User::notificationsCount().') ' : '' }}@section('title')@show {{$settings->title.' - '.__('seo.slogan')}}
+  </title>
   <!-- Favicon -->
   <link href="{{ url('public/img', $settings->favicon) }}" rel="icon">
+
+  <!-- Facebook data -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="{{ auth()->check() && User::notificationsCount() ? '('.User::notificationsCount().') ' : '' }}@section('title')@show {{$settings->title.' - '.__('seo.slogan')}}" />
+  <meta property="og:description" content="@yield('description_custom')@if(!Request::route()->named('seo') && !Request::route()->named('profile')){{trans('seo.description')}}@endif" />
+  <meta property="og:image" content="{{ url('public/img', $settings->index_image_top) }}" />
+  <meta property="og:url" content="https://justyfans.com" />
+  <meta property="og:site_name" content="JustyFans" />
+
+  <!-- Twitter Card data -->
+  <meta name="twitter:card" content="website">
+  <meta name="twitter:site" content="@publisher_handle">
+  <meta name="twitter:title" content="{{ auth()->check() && User::notificationsCount() ? '('.User::notificationsCount().') ' : '' }}@section('title')@show {{$settings->title.' - '.__('seo.slogan')}}">
+  <meta name="twitter:description" content="@yield('description_custom')@if(!Request::route()->named('seo') && !Request::route()->named('profile')){{trans('seo.description')}}@endif"> 
+  <meta name="twitter:creator" content="@author_handle">
+  <meta name="twitter:image" content="{{ url('public/img', $settings->index_image_top) }}">
+
+  <!-- Open Graph data -->
+  <meta property="og:title" content="{{ auth()->check() && User::notificationsCount() ? '('.User::notificationsCount().') ' : '' }}@section('title')@show {{$settings->title.' - '.__('seo.slogan')}}" /> 
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://justyfans.com" />
+  <meta property="og:image" content="{{ url('public/img', $settings->index_image_top) }}" />
+  <meta property="og:description" content="@yield('description_custom')@if(!Request::route()->named('seo') && !Request::route()->named('profile')){{trans('seo.description')}}@endif" />
+  <meta property="og:site_name" content="JustyFans" />
 
   @include('includes.css_general')
 
