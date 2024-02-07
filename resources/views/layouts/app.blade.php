@@ -19,7 +19,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:title" content="{{ auth()->check() && User::notificationsCount() ? '('.User::notificationsCount().') ' : '' }}@section('title')@show {{$settings->title.' - '.__('seo.slogan')}}" />
   <meta property="og:description" content="@yield('description_custom')@if(!Request::route()->named('seo') && !Request::route()->named('profile')){{trans('seo.description')}}@endif" />
-  <meta property="og:image" content="{{ url('public/img', $settings->home_index) }}" />
+  <meta property="og:image" content="{{ url('public/img/og-image.png') }}" />
   <meta property="og:url" content="https://justyfans.com" />
   <meta property="og:site_name" content="JustyFans" />
   <meta property="fb:app_id" content="953467689457824">
@@ -30,13 +30,13 @@
   <meta name="twitter:title" content="{{ auth()->check() && User::notificationsCount() ? '('.User::notificationsCount().') ' : '' }}@section('title')@show {{$settings->title.' - '.__('seo.slogan')}}">
   <meta name="twitter:description" content="@yield('description_custom')@if(!Request::route()->named('seo') && !Request::route()->named('profile')){{trans('seo.description')}}@endif"> 
   <meta name="twitter:creator" content="@author_handle">
-  <meta name="twitter:image" content="{{ url('public/img', $settings->home_index) }}">
+  <meta name="twitter:image" content="{{ url('public/img/og-image.png') }}">
 
   <!-- Open Graph data -->
   <meta property="og:title" content="{{ auth()->check() && User::notificationsCount() ? '('.User::notificationsCount().') ' : '' }}@section('title')@show {{$settings->title.' - '.__('seo.slogan')}}" /> 
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://justyfans.com" />
-  <meta property="og:image" content="{{ url('public/img', $settings->home_index) }}" />
+  <meta property="og:image" content="{{ url('public/img/og-image.png') }}" />
   <meta property="og:description" content="@yield('description_custom')@if(!Request::route()->named('seo') && !Request::route()->named('profile')){{trans('seo.description')}}@endif" />
   <meta property="og:site_name" content="JustyFans" />
 
