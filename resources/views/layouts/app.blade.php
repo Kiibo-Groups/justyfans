@@ -22,6 +22,7 @@
   <meta property="og:image" content="{{ url('public/img', $settings->home_index) }}" />
   <meta property="og:url" content="https://justyfans.com" />
   <meta property="og:site_name" content="JustyFans" />
+  <meta property="fb:app_id" content="953467689457824">
 
   <!-- Twitter Card data -->
   <meta name="twitter:card" content="website">
