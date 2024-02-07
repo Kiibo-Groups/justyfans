@@ -8,7 +8,7 @@ return array(
 	|--------------------------------------------------------------------------
 	|
 	*/
-	"slogan" => "Soporte a los creadores de contenido", // New on v4.0
-	"description" => "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ut tortor rutrum massa efficitur tincidunt vel nec lacus. Curabitur porta aliquet diam, eu gravida neque lacinia.",
-	"keywords" => "donaciones,soporte,creadores,sponzy,suscripción,contenido",
+	"slogan" => "La mejor plataforma para creadores de contenido",
+	"description" => "JustyFans es la plataforma social que revoluciona las conexiones entre creadores de contenido y fans, Encuentra a tus artistas favoritos, consigue acceso a sus eventos sociales privados y mucho más...",
+	"keywords" => "donaciones,soporte,creadores,JustyFans,suscripción,contenido,creadores,tiktokers,youtubers,Influencers",
 );
