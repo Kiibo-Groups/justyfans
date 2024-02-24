@@ -51,6 +51,17 @@
  @if($settings->google_analytics != '')
   {!! $settings->google_analytics !!}
   @endif
+
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KSWHF9XSGL">
+</script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-KSWHF9XSGL');
+</script>
 </head>
 
 <body>
