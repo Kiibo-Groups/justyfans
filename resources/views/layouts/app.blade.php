@@ -177,22 +177,7 @@
       @if ($settings->live_streaming_status == 'on')
         @include('includes.modal-live-stream')
       @endif
-      
-      @if(auth()->user()->payment_gateway == '')
-      <div class="modal fade" tabindex="-1" id="alertMethodPayout">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-body p-4">
-              <p>{{ __('general.alert_content_adult') }}</p>
-            </div>
-            <div class="modal-footer border-0 pt-0">
-              <a href="https://google.com" class="btn e-none p-0 mr-3">{{trans('general.leave')}}</a>
-              <button type="button" class="btn btn-primary" id="btnAlertMethodPayout">{{trans('general.i_am_age')}}</button>
-            </div>
-          </div>
-        </div>
-      </div>
-      @endif
+     
       
     @endauth
 
