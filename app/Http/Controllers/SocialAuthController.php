@@ -14,12 +14,11 @@ class SocialAuthController extends Controller
     {
       return Socialite::driver($provider)->redirect();
     }
+
     // Callback function
     public function callback(SocialAccountService $service, Request $request, $provider)
     {
-
-      try {
-          $user = $service->createOrGetUser(Socialite::driver($provider)->user(), $provider);
+        $user = $service->createOrGetUser(Socialite::driver($provider)->user(), $provider);
 
           // Return Error missing Email User
           if (! isset($user->id)) {
@@ -28,9 +27,13 @@ class SocialAuthController extends Controller
             auth()->login($user);
           }
 
-      } catch (\Exception $e) {
-           return redirect('login')->with(['login_required' => $e->getMessage()]);
-      }
+
+      // try {
+          
+
+      // } catch (\Exception $e) {
+      //      return redirect('login')->with(['login_required' => $e->getMessage()]);
+      // }
 
       return redirect()->to('/');
     }// End callback

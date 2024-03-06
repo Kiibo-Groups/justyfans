@@ -49,7 +49,6 @@
 							(Log File: {{ Helper::formatBytes(filesize(storage_path("logs".DIRECTORY_SEPARATOR."laravel.log"))) }})
 						</small>
 						@endif
-						
 					</a>
 		          </div>
 		        </div>
