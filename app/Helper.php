@@ -460,8 +460,8 @@ public static function resizeImageFixed($image,$width,$height,$imageNew = null)
 	}
 
 	//============== linkText
-	 public static function linkText($text)
-	 {
+	public static function linkText($text)
+	{
 	    return preg_replace('/https?:\/\/[\w\-\.!~#?&=+%;:\*\'"(),\/]+/u','<a class="data-link" href="$0" target="_blank">$0</a>', $text);
 	}
 
@@ -471,173 +471,173 @@ public static function resizeImageFixed($image,$width,$height,$imageNew = null)
 	}// End method
 
 	public static function amountFormatDecimal($value, $applyTax = null)
-   {
-	 // Apply Taxes
-	 if (auth()->check() && $applyTax) {
-		 $isTaxable = auth()->user()->isTaxable();
-		 $taxes = 0;
+   	{
+		// Apply Taxes
+		if (auth()->check() && $applyTax) {
+			$isTaxable = auth()->user()->isTaxable();
+			$taxes = 0;
 
-  	 if ($applyTax && $isTaxable->count()) {
-  		 foreach ($isTaxable as $tax) {
-  				$taxes += $tax->percentage;
-  		 }
-
-  		 $valueWithTax = number_format($taxes * $value / 100, 2);
-  		 $value = ($value + $valueWithTax);
-		}
-	 }// isTaxable
-
-	 if (config('settings.currency_code') == 'JPY') {
-		 return config('settings.currency_symbol').number_format($value);
-	 }
-
- 	 if (config('settings.decimal_format') == 'dot') {
- 		 $decimalDot = '.';
- 		 $decimalComma = ',';
- 	 } else {
- 		 $decimalDot = ',';
- 		 $decimalComma = '.';
- 	 }
-
-	 switch (config('settings.currency_position')) {
-	 	case 'left':
-	 		$amount = config('settings.currency_symbol').number_format($value, 2, $decimalDot, $decimalComma);
-	 		break;
-
-			case 'left_space':
-		 		$amount = config('settings.currency_symbol').' '.number_format($value, 2, $decimalDot, $decimalComma);
-		 		break;
-
-			case 'right':
-		 		$amount = number_format($value, 2, $decimalDot, $decimalComma).config('settings.currency_symbol');
-		 		break;
-
-				case 'right_space':
-			 		$amount = number_format($value, 2, $decimalDot, $decimalComma).' '.config('settings.currency_symbol');
-			 		break;
-
-	 	default:
-	 		$amount = config('settings.currency_symbol').number_format($value, 2, $decimalDot, $decimalComma);
-	 		break;
-	 }
-
- 	return $amount;
-
- }// END
-
- public static function calculateProductPriceOnStore($value, $shippingFee = 0.00)
- {
-	 // Aplly Taxes
-	 if (auth()->check()) {
-		$isTaxable = auth()->user()->isTaxable();
-  	 	$taxes = 0;
-
-  	 if ($isTaxable->count()) {
-  		 foreach ($isTaxable as $tax) {
-  				$taxes += $tax->percentage;
-  		 }
-
-  		 $valueWithTax = number_format($taxes * $value / 100, 2);
-  		 $value = ($value + $valueWithTax);
-  	 }
-	 }// isTaxable
-
-	 if (config('settings.currency_code') == 'JPY') {
-		 return config('settings.currency_symbol').number_format($value);
-	 }
-
- 	 if (config('settings.decimal_format') == 'dot') {
- 		 $decimalDot = '.';
- 		 $decimalComma = ',';
- 	 } else {
- 		 $decimalDot = ',';
- 		 $decimalComma = '.';
- 	 }
-
-	 $value = ($value + $shippingFee);
-
-	 switch (config('settings.currency_position')) {
-	 	case 'left':
-	 		$amount = config('settings.currency_symbol').number_format($value, 2, $decimalDot, $decimalComma);
-	 		break;
-
-			case 'left_space':
-		 		$amount = config('settings.currency_symbol').' '.number_format($value, 2, $decimalDot, $decimalComma);
-		 		break;
-
-			case 'right':
-		 		$amount = number_format($value, 2, $decimalDot, $decimalComma).config('settings.currency_symbol');
-		 		break;
-
-				case 'right_space':
-			 		$amount = number_format($value, 2, $decimalDot, $decimalComma).' '.config('settings.currency_symbol');
-			 		break;
-
-	 	default:
-	 		$amount = config('settings.currency_symbol').number_format($value, 2, $decimalDot, $decimalComma);
-	 		break;
-	 }
-
- 	return $amount;
-
- }// End calculateProductPriceOnStore
-
- public static function amountGrossProductShop($amount, $shippingFee = 0.00)
- {
-	 // Aplly Taxes
-	 $isTaxable = auth()->user()->isTaxable();
-	 $taxes = 0;
-
-	 if ($isTaxable->count()) {
-		 foreach ($isTaxable as $tax) {
+		if ($applyTax && $isTaxable->count()) {
+			foreach ($isTaxable as $tax) {
 				$taxes += $tax->percentage;
-		 }
+			}
 
-		 $amount = $amount + ($taxes * $amount / 100);
+			$valueWithTax = number_format($taxes * $value / 100, 2);
+			$value = ($value + $valueWithTax);
+		}
+		}// isTaxable
 
-		 if (config('settings.currency_code') == 'JPY') {
-		 	$amount = round($amount + $shippingFee);
-		} else {
-			$amount = number_format($amount + $shippingFee, 2, '.', '');
+		if (config('settings.currency_code') == 'JPY') {
+			return config('settings.currency_symbol').number_format($value);
 		}
 
-		 return $amount;
-	 }// isTaxable
-
-	 return $amount + $shippingFee;
-
- }// End amountGrossProductShop
-
- public static function amountGross($amount)
- {
-	 // Aplly Taxes
-	 $isTaxable = auth()->user()->isTaxable();
-	 $taxes = 0;
-
-	 if ($isTaxable->count()) {
-		 foreach ($isTaxable as $tax) {
-			$taxes += $tax->percentage;
-		 }
-
-		 if (config('settings.currency_code') == 'JPY') {
-		 	$amount = round($amount + ($taxes * $amount / 100));
+		if (config('settings.decimal_format') == 'dot') {
+			$decimalDot = '.';
+			$decimalComma = ',';
 		} else {
-			$amount = number_format($amount + ($taxes * $amount / 100), 2, '.', '');
+			$decimalDot = ',';
+			$decimalComma = '.';
 		}
 
-		 return $amount;
-	 }// isTaxable
+		switch (config('settings.currency_position')) {
+		case 'left':
+			$amount = config('settings.currency_symbol').number_format($value, 2, $decimalDot, $decimalComma);
+			break;
 
-	 return $amount;
- }
+			case 'left_space':
+				$amount = config('settings.currency_symbol').' '.number_format($value, 2, $decimalDot, $decimalComma);
+				break;
 
- public static function calculatePercentage($value, $percentage)
- {
-	 return number_format(($value * $percentage / 100), 2);
- }
+			case 'right':
+				$amount = number_format($value, 2, $decimalDot, $decimalComma).config('settings.currency_symbol');
+				break;
 
- public static function envUpdate($key, $value, $comma = false)
-  {
+				case 'right_space':
+					$amount = number_format($value, 2, $decimalDot, $decimalComma).' '.config('settings.currency_symbol');
+					break;
+
+		default:
+			$amount = config('settings.currency_symbol').number_format($value, 2, $decimalDot, $decimalComma);
+			break;
+		}
+
+		return $amount;
+
+ 	}// END
+
+	public static function calculateProductPriceOnStore($value, $shippingFee = 0.00)
+	{
+		// Aplly Taxes
+		if (auth()->check()) {
+			$isTaxable = auth()->user()->isTaxable();
+			$taxes = 0;
+
+		if ($isTaxable->count()) {
+			foreach ($isTaxable as $tax) {
+					$taxes += $tax->percentage;
+			}
+
+			$valueWithTax = number_format($taxes * $value / 100, 2);
+			$value = ($value + $valueWithTax);
+		}
+		}// isTaxable
+
+		if (config('settings.currency_code') == 'JPY') {
+			return config('settings.currency_symbol').number_format($value);
+		}
+
+		if (config('settings.decimal_format') == 'dot') {
+			$decimalDot = '.';
+			$decimalComma = ',';
+		} else {
+			$decimalDot = ',';
+			$decimalComma = '.';
+		}
+
+		$value = ($value + $shippingFee);
+
+		switch (config('settings.currency_position')) {
+			case 'left':
+				$amount = config('settings.currency_symbol').number_format($value, 2, $decimalDot, $decimalComma);
+				break;
+
+				case 'left_space':
+					$amount = config('settings.currency_symbol').' '.number_format($value, 2, $decimalDot, $decimalComma);
+					break;
+
+				case 'right':
+					$amount = number_format($value, 2, $decimalDot, $decimalComma).config('settings.currency_symbol');
+					break;
+
+					case 'right_space':
+						$amount = number_format($value, 2, $decimalDot, $decimalComma).' '.config('settings.currency_symbol');
+						break;
+
+			default:
+				$amount = config('settings.currency_symbol').number_format($value, 2, $decimalDot, $decimalComma);
+				break;
+		}
+
+		return $amount;
+
+	}// End calculateProductPriceOnStore
+
+	public static function amountGrossProductShop($amount, $shippingFee = 0.00)
+	{
+		// Aplly Taxes
+		$isTaxable = auth()->user()->isTaxable();
+		$taxes = 0;
+
+		if ($isTaxable->count()) {
+			foreach ($isTaxable as $tax) {
+					$taxes += $tax->percentage;
+			}
+
+			$amount = $amount + ($taxes * $amount / 100);
+
+			if (config('settings.currency_code') == 'JPY') {
+				$amount = round($amount + $shippingFee);
+			} else {
+				$amount = number_format($amount + $shippingFee, 2, '.', '');
+			}
+
+			return $amount;
+		}// isTaxable
+
+		return $amount + $shippingFee;
+
+	}// End amountGrossProductShop
+
+	public static function amountGross($amount)
+	{
+		// Aplly Taxes
+		$isTaxable = auth()->user()->isTaxable();
+		$taxes = 0;
+
+		if ($isTaxable->count()) {
+			foreach ($isTaxable as $tax) {
+				$taxes += $tax->percentage;
+			}
+
+			if (config('settings.currency_code') == 'JPY') {
+				$amount = round($amount + ($taxes * $amount / 100));
+			} else {
+				$amount = number_format($amount + ($taxes * $amount / 100), 2, '.', '');
+			}
+
+			return $amount;
+		}// isTaxable
+
+		return $amount;
+	}
+
+	public static function calculatePercentage($value, $percentage)
+	{
+		return number_format(($value * $percentage / 100), 2);
+	}
+
+ 	public static function envUpdate($key, $value, $comma = false)
+  	{
       $path = base_path('.env');
 			$value = trim($value);
 			$env = $comma ? '"'.env($key).'"' : env($key);
@@ -649,7 +649,7 @@ public static function resizeImageFixed($image,$width,$height,$imageNew = null)
 							file_get_contents($path)
           ));
       }
-  }
+  	}
 
 	public static function urlToDomain($url)
 	{
@@ -669,8 +669,8 @@ public static function resizeImageFixed($image,$width,$height,$imageNew = null)
 		return true;
 	}
 
- public static function expandLink($url)
- {
+	public static function expandLink($url)
+	{
 	 $headers = get_headers($url, 1);
 
 	 if (! empty($headers['Location'])) {
@@ -678,21 +678,21 @@ public static function resizeImageFixed($image,$width,$height,$imageNew = null)
 		 $url = array_pop($headers['Location']);
 	 }
 	 return $url;
- }
+ 	}
 
- public static function getFirstUrl($string)
- {
-	preg_match_all('#\bhttps?://[^\s()<>]+(?:\([\w\d]+\)|([^[:punct:]\s]|/))#', $string, $_matches);
-	$firstURL = $_matches[0][0] ?? false;
-	
-	if ($firstURL) {
-		return $firstURL;
+	public static function getFirstUrl($string)
+	{
+		preg_match_all('#\bhttps?://[^\s()<>]+(?:\([\w\d]+\)|([^[:punct:]\s]|/))#', $string, $_matches);
+		$firstURL = $_matches[0][0] ?? false;
+		
+		if ($firstURL) {
+			return $firstURL;
+		}
 	}
- }
 
- public static function daysInMonth($month, $year)
- {
-	 return $month == 2 ? ($year % 4 ? 28 : ($year % 100 ? 29 : ($year % 400 ? 28 : 29))) : (($month - 1) % 7 % 2 ? 30 : 31);
+	public static function daysInMonth($month, $year)
+	{
+		return $month == 2 ? ($year % 4 ? 28 : ($year % 100 ? 29 : ($year % 400 ? 28 : 29))) : (($month - 1) % 7 % 2 ? 30 : 31);
 	}
 
 	public static function PercentageIncreaseDecrease($currentPeriod, $previousPeriod)
@@ -898,9 +898,9 @@ public static function resizeImageFixed($image,$width,$height,$imageNew = null)
 
 	public static function sizeFileMb($size, $precision = 2)
 	{
-    $base = log($size, 1024);
-    return round(pow(1024, $base - floor($base)), $precision);
-  }
+		$base = log($size, 1024);
+		return round(pow(1024, $base - floor($base)), $precision);
+  	}
 
 	public static function getDatacURL($url)
 	{
@@ -978,9 +978,9 @@ public static function resizeImageFixed($image,$width,$height,$imageNew = null)
 	public static function liveStatus($id)
 	{
 		return LiveStreamings::whereId($id)
-    ->where('updated_at', '>', now()->subMinutes(5))
-    ->whereStatus('0')
-    ->first();
+		->where('updated_at', '>', now()->subMinutes(5))
+		->whereStatus('0')
+		->first();
 	}
 
 	public static function calculateSubscriptionDiscount($interval, $priceMonth, $planPrice)

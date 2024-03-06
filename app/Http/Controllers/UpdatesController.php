@@ -57,13 +57,13 @@ class UpdatesController extends Controller
     }
 
     $messages = [
-    'description.required' => trans('general.please_write_something'),
-    '_description.required_if' => trans('general.please_write_something_2'),
-    'description.min' => trans('validation.update_min_length'),
-    'description.max' => trans('validation.update_max_length'),
-    'title.max' => trans('validation.max', ['attribute' => __('admin.title')]),
-    'price.min' => trans('general.amount_minimum'.$currencyPosition, ['symbol' => $this->settings->currency_symbol, 'code' => $this->settings->currency_code]),
-    'price.max' => trans('general.amount_maximum'.$currencyPosition, ['symbol' => $this->settings->currency_symbol, 'code' => $this->settings->currency_code]),
+      'description.required' => trans('general.please_write_something'),
+      '_description.required_if' => trans('general.please_write_something_2'),
+      'description.min' => trans('validation.update_min_length'),
+      'description.max' => trans('validation.update_max_length'),
+      'title.max' => trans('validation.max', ['attribute' => __('admin.title')]),
+      'price.min' => trans('general.amount_minimum'.$currencyPosition, ['symbol' => $this->settings->currency_symbol, 'code' => $this->settings->currency_code]),
+      'price.max' => trans('general.amount_maximum'.$currencyPosition, ['symbol' => $this->settings->currency_symbol, 'code' => $this->settings->currency_code]),
     ];
 
     if (auth()->user()->verified_id != 'yes') {

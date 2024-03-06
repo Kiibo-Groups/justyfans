@@ -163,9 +163,7 @@ class LangController extends Controller
   public function changeLang($id)
   {
 	$lang = Languages::where('abbreviation', $id)->firstOrFail();
-
 	session()->put('locale', $lang->abbreviation);
-
 	return back();
 
   }//<--- End Method
