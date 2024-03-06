@@ -24,7 +24,7 @@
   <!-- ./ jumbotron -->
 
   <div class="section py-5 py-large">
-    <div class="container">
+    <div class="container container-lg-3">
         <div class="btn-block text-center mb-5">
           <h1 class="txt-black">{{trans('general.header_box_2')}}</h1>
           <p>
@@ -197,18 +197,18 @@
   </div>
 @endif
 
-    <div class="jumbotron m-0 text-white text-center bg-gradient">
-      <div class="container position-relative">
-        <h1>{{trans('general.head_title_bottom')}}</h1>
-        <p>{{trans('general.head_title_bottom_desc')}}</p>
-        <p>
-          <a href="{{url('creators')}}" class="btn btn-lg btn-main btn-outline-light btn-w-mb px-4 mr-2" role="button">{{trans('general.explore')}}</a>
-          <a class="btn-arrow btn btn-lg btn-main btn-outline-light btn-w px-4 toggleRegister" href="{{ $settings->registration_active == '1' ? url('signup') : url('login')}}" role="button">
-          {{trans('general.getting_started')}}
-        </a>
-        </p>
-      </div>
-    </div>
+<div class="jumbotron m-0 text-white text-center bg-gradient">
+  <div class="container position-relative">
+    <h1>{{trans('general.head_title_bottom')}}</h1>
+    <p>{{trans('general.head_title_bottom_desc')}}</p>
+    <p>
+      <a href="{{url('creators')}}" class="btn btn-lg btn-main btn-outline-light btn-w-mb px-4 mr-2" role="button">{{trans('general.explore')}}</a>
+      <a class="btn-arrow btn btn-lg btn-main btn-outline-light btn-w px-4 toggleRegister" href="{{ $settings->registration_active == '1' ? url('signup') : url('login')}}" role="button">
+      {{trans('general.getting_started')}}
+    </a>
+    </p>
+  </div>
+</div>
 
 @endsection
 

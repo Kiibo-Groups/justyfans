@@ -4,13 +4,14 @@
 
 @section('content')
 <section class="section section-sm">
-    <div class="container">
+    <div class="container container-lg-3">
       <div class="row justify-content-center text-center mb-sm">
         <div class="col-lg-8 py-5">
           <h2 class="mb-0 font-montserrat"><i class="fa fa-tools mr-2"></i> {{trans('users.settings')}}</h2>
           <p class="lead text-muted mt-0">{{trans('users.settings_desc')}}</p>
         </div>
       </div>
+      
       <div class="row">
 
         @include('includes.cards-settings')
@@ -18,14 +19,14 @@
         <div class="col-md-6 col-lg-9 mb-5 mb-lg-0">
 
           @if (session('status'))
-                  <div class="alert alert-success">
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                			<span aria-hidden="true">×</span>
-                			</button>
+            <div class="alert alert-success">
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">×</span>
+                </button>
 
-                    {{ session('status') }}
-                  </div>
-                @endif
+              {{ session('status') }}
+            </div>
+          @endif
 
           @include('errors.errors-forms')
 

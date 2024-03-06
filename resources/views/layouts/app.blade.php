@@ -48,20 +48,20 @@
 
   @yield('css')
 
- @if($settings->google_analytics != '')
-  {!! $settings->google_analytics !!}
+  @if($settings->google_analytics != '')
+    {!! $settings->google_analytics !!}
   @endif
 
   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-KSWHF9XSGL">
-</script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-KSWHF9XSGL">
+  </script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-  gtag('config', 'G-KSWHF9XSGL');
-</script>
+    gtag('config', 'G-KSWHF9XSGL');
+  </script>
 </head>
 
 <body>
@@ -101,6 +101,7 @@
   @endif
 
 
+
   <div class="popout popout-error font-default"></div>
 
   @if (auth()->guest() && request()->path() == '/' && $settings->home_style == 0
@@ -133,8 +134,12 @@
             'creators/*', 
             'live/*'
             ])          
-          )
+          ) 
+ 
+      
 
+      
+      
           @if (auth()->guest() && request()->path() == '/' && $settings->home_style == 0
                 || auth()->guest() && request()->path() != '/' && $settings->home_style == 0
                 || auth()->guest() && request()->path() != '/' && $settings->home_style == 1
@@ -154,22 +159,39 @@
 
     @guest
 
+   
+
     @if (Helper::showLoginFormModal())
-        @include('includes.modal-login')
-      @endif
+      @include('includes.modal-login')
+    @endif
 
     @endguest
 
     @auth
-
       @if ($settings->disable_tips == 'off')
-      @include('includes.modal-tip')
-    @endif
+        @include('includes.modal-tip')
+      @endif
 
       @include('includes.modal-payperview')
 
       @if ($settings->live_streaming_status == 'on')
         @include('includes.modal-live-stream')
+      @endif
+      
+      @if(auth()->user()->payment_gateway == '')
+      <div class="modal fade" tabindex="-1" id="alertMethodPayout">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-body p-4">
+              <p>{{ __('general.alert_content_adult') }}</p>
+            </div>
+            <div class="modal-footer border-0 pt-0">
+              <a href="https://google.com" class="btn e-none p-0 mr-3">{{trans('general.leave')}}</a>
+              <button type="button" class="btn btn-primary" id="btnAlertMethodPayout">{{trans('general.i_am_age')}}</button>
+            </div>
+          </div>
+        </div>
+      </div>
       @endif
       
     @endauth

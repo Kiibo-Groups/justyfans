@@ -9,7 +9,7 @@
 
 @section('content')
 <section class="section section-sm">
-    <div class="container">
+    <div class="container container-lg-3">
       <div class="row justify-content-center text-center mb-sm">
         <div class="col-lg-8 py-5">
           <h2 class="mb-0 font-montserrat"><i class="bi bi-pencil mr-2"></i> {{ auth()->user()->verified_id == 'yes' ? trans('general.edit_my_page') : trans('users.edit_profile')}}</h2>

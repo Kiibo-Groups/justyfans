@@ -125,7 +125,7 @@
 @endauth
 
 <script type="text/javascript">
-// Global variables
+  // Global variables
   var URL_BASE = "{{ url('/') }}";
   var lang = '{{ auth()->user()->language ?? session('locale') }}';
   var _title = '@section("title")@show {{e($settings->title).' - '.__('seo.slogan')}}';
@@ -160,88 +160,88 @@
   var sign_up_with = "{{ __('auth.sign_up_with') }}";
   var currentPage = "{!! url()->full() !!}";
   var requestGender = {{ request()->get('gender') ? 'true' : 'false' }};
-@auth
-  var is_bookmarks = {{ request()->is('my/bookmarks') ? 'true' : 'false' }};
-  var is_likes = {{ request()->is('my/likes') ? 'true' : 'false' }};
-  var is_purchases = {{ request()->is('my/purchases') ? 'true' : 'false' }};
-  var isMessageChat = {{ request()->is('messages/*') ? 'true' : 'false' }};
-  var delete_confirm = "{{trans('general.delete_confirm')}}";
-  var confirm_delete_comment = "{{trans('general.confirm_delete_comment')}}";
-  var confirm_delete_update = "{{trans('general.confirm_delete_update')}}";
-  var yes_confirm = "{{trans('general.yes_confirm')}}";
-  var cancel_confirm = "{{trans('general.cancel_confirm')}}";
-  var formats_available = "{{trans('general.formats_available')}}";
-  var formats_available_images = "{{trans('general.formats_available_images')}}";
-  var formats_available_verification = "{{trans('general.formats_available_verification_form_w9', ['formats' => 'JPG, PNG, GIF'])}}";
-  var file_size_allowed = {{$settings->file_size_allowed * 1024}};
-  var max_size_id = "{{trans('general.max_size_id').' '.Helper::formatBytes($settings->file_size_allowed * 1024)}}";
-  var max_size_id_lang = "{{trans('general.max_size_id').' '.Helper::formatBytes($settings->file_size_allowed_verify_account * 1024)}}";
-  var maxSizeInMb = "{{ floor($settings->file_size_allowed / 1024)}}";
-  var file_size_allowed_verify_account = {{$settings->file_size_allowed_verify_account * 1024}};
-  var error_width_min = "{{trans('general.width_min',['data' => 20])}}";
-  var story_length = {{$settings->story_length}};
-  var payment_card_error = "{{ trans('general.payment_card_error') }}";
-  var confirm_delete_message = "{{trans('general.confirm_delete_message')}}";
-  var confirm_delete_conversation = "{{trans('general.confirm_delete_conversation')}}";
-  var confirm_cancel_subscription = "{!!trans('general.confirm_cancel_subscription')!!}";
-  var yes_confirm_cancel = "{{trans('general.yes_confirm_cancel')}}";
-  var confirm_delete_notifications = "{{trans('general.confirm_delete_notifications')}}";
-  var confirm_delete_withdrawal = "{{trans('general.confirm_delete_withdrawal')}}";
-  var change_cover = "{{trans('general.change_cover')}}";
-  var pin_to_your_profile = "{{trans('general.pin_to_your_profile')}}";
-  var unpin_from_profile = "{{trans('general.unpin_from_profile')}}";
-  var post_pinned_success = "{{trans('general.post_pinned_success')}}";
-  var post_unpinned_success = "{{trans('general.post_unpinned_success')}}";
-  var stripeKey = "{{ PaymentGateways::where('id', 2)->where('enabled', '1')->whereSubscription('yes')->first() ? env('STRIPE_KEY') : false }}";
-  var stripeKeyWallet = "{{ PaymentGateways::where('id', 2)->where('enabled', '1')->first() ? env('STRIPE_KEY') : false }}";
-  var thanks = "{{ trans('general.thanks') }}";
-  var tip_sent_success = "{{ trans('general.tip_sent_success') }}";
-  var error_payment_stripe_3d = "{{ trans('general.error_payment_stripe_3d') }}";
-  var colorStripe = {!! auth()->user()->dark_mode == 'on' ? "'#dcdcdc'" : "'#32325d'" !!};
-  var full_name_user = '{{ auth()->user()->name }}';
-  var color_default = '{{ $settings->color_default }}';
-  var formats_available_upload_file = "{{trans('general.formats_available_upload_file')}}";
-  var cancel_subscription = "{{trans('general.unsubscribe')}}";
-  var your_subscribed = "{{trans('general.your_subscribed')}}";
-  var subscription_expire = "{{trans('general.subscription_expire')}}";
-  var formats_available_verification_form_w9 = "{{trans('general.formats_available_verification_form_w9', ['formats' => 'PDF'])}}";
-  var payment_was_successful = "{{trans('general.payment_was_successful')}}";
-  var public_post = "{{trans('general.public')}}";
-  var locked_post = "{{trans('users.content_locked')}}";
-  var maximum_files_post = {{$settings->maximum_files_post}};
-  var maximum_files_msg = {{$settings->maximum_files_msg}};
-  var great = "{{trans('general.great')}}";
-  var msg_success_sent_all_subscribers = "{{trans('general.msg_success_sent_all_subscribers')}}";
-  var is_explore = {{ request()->is('explore') ? 'true' : 'false' }};
-  var video_on_way = "{{trans('general.video_on_way')}}";
-  var story_on_way = "{{trans('general.story_on_way')}}";
-  var video_processed_info = "{{trans('general.video_processed_info')}}";
-  var confirm_end_live = "{{trans('general.confirm_end_live')}}";
-  var yes_confirm_end_live = "{{trans('general.yes_confirm_end_live')}}";
-  var liveMode = false;
-  var min_width_height_image = {{ $settings->min_width_height_image }};
-  var min_width_image_error = '{{ trans('general.width_min', ['data' => $settings->min_width_height_image]) }}';
-  var decimalZero = {{ $settings->currency_code == 'JPY' ? 0 : 2 }};
-  var confirm_exit_live = "{{trans('general.confirm_exit_live')}}";
-  var yes_confirm_exit_live = "{{trans('general.yes_confirm_exit_live')}}";
-  var purchase_processed_shortly = "{{trans('general.purchase_processed_shortly')}}";
-  var confirm_reject_order = "{{ __('general.confirm_reject_order') }}";
-  var reject_order = "{{ __('general.reject_order') }}";
-  var action_cannot_reversed = "{{ __('general.action_cannot_reversed') }}";
-  var mark_as_delivered = "{{ __('general.mark_as_delivered') }}";
-  var confirm_restrict = "{{ __('general.confirm_restrict') }}";
-  var restrict = "{{ __('general.restrict') }}";
-  var remove_restriction = "{{ __('general.remove_restriction') }}";
-  var show_only_free = "{{ __('general.show_only_free') }}";
-  var show_all = "{{ __('general.show_all') }}";
-  @if ($settings->video_encoding == 'off')
-  var extensionsPostMessage = ['png','jpeg','jpg','gif','ief','video/mp4','audio/x-matroska','audio/mpeg'];
-  var extensionsStories = ['png','jpeg','jpg','gif','ief','video/mp4','audio/x-matroska','audio/mpeg'];
-  @else
-  var extensionsPostMessage = ['png','jpeg','jpg','gif','ief','video/mp4','video/quicktime','video/3gpp','video/mpeg','video/x-matroska','video/x-ms-wmv','video/vnd.avi','video/avi','video/x-flv','audio/x-matroska','audio/mpeg'];
-  var extensionsStories = ['png','jpeg','jpg','gif','ief','video/mp4','video/quicktime','video/3gpp','video/mpeg','video/x-matroska','video/x-ms-wmv','video/vnd.avi','video/avi','video/x-flv'];
-  @endif
-@endauth
+  @auth
+    var is_bookmarks = {{ request()->is('my/bookmarks') ? 'true' : 'false' }};
+    var is_likes = {{ request()->is('my/likes') ? 'true' : 'false' }};
+    var is_purchases = {{ request()->is('my/purchases') ? 'true' : 'false' }};
+    var isMessageChat = {{ request()->is('messages/*') ? 'true' : 'false' }};
+    var delete_confirm = "{{trans('general.delete_confirm')}}";
+    var confirm_delete_comment = "{{trans('general.confirm_delete_comment')}}";
+    var confirm_delete_update = "{{trans('general.confirm_delete_update')}}";
+    var yes_confirm = "{{trans('general.yes_confirm')}}";
+    var cancel_confirm = "{{trans('general.cancel_confirm')}}";
+    var formats_available = "{{trans('general.formats_available')}}";
+    var formats_available_images = "{{trans('general.formats_available_images')}}";
+    var formats_available_verification = "{{trans('general.formats_available_verification_form_w9', ['formats' => 'JPG, PNG, GIF'])}}";
+    var file_size_allowed = {{$settings->file_size_allowed * 1024}};
+    var max_size_id = "{{trans('general.max_size_id').' '.Helper::formatBytes($settings->file_size_allowed * 1024)}}";
+    var max_size_id_lang = "{{trans('general.max_size_id').' '.Helper::formatBytes($settings->file_size_allowed_verify_account * 1024)}}";
+    var maxSizeInMb = "{{ floor($settings->file_size_allowed / 1024)}}";
+    var file_size_allowed_verify_account = {{$settings->file_size_allowed_verify_account * 1024}};
+    var error_width_min = "{{trans('general.width_min',['data' => 20])}}";
+    var story_length = {{$settings->story_length}};
+    var payment_card_error = "{{ trans('general.payment_card_error') }}";
+    var confirm_delete_message = "{{trans('general.confirm_delete_message')}}";
+    var confirm_delete_conversation = "{{trans('general.confirm_delete_conversation')}}";
+    var confirm_cancel_subscription = "{!!trans('general.confirm_cancel_subscription')!!}";
+    var yes_confirm_cancel = "{{trans('general.yes_confirm_cancel')}}";
+    var confirm_delete_notifications = "{{trans('general.confirm_delete_notifications')}}";
+    var confirm_delete_withdrawal = "{{trans('general.confirm_delete_withdrawal')}}";
+    var change_cover = "{{trans('general.change_cover')}}";
+    var pin_to_your_profile = "{{trans('general.pin_to_your_profile')}}";
+    var unpin_from_profile = "{{trans('general.unpin_from_profile')}}";
+    var post_pinned_success = "{{trans('general.post_pinned_success')}}";
+    var post_unpinned_success = "{{trans('general.post_unpinned_success')}}";
+    var stripeKey = "{{ PaymentGateways::where('id', 2)->where('enabled', '1')->whereSubscription('yes')->first() ? env('STRIPE_KEY') : false }}";
+    var stripeKeyWallet = "{{ PaymentGateways::where('id', 2)->where('enabled', '1')->first() ? env('STRIPE_KEY') : false }}";
+    var thanks = "{{ trans('general.thanks') }}";
+    var tip_sent_success = "{{ trans('general.tip_sent_success') }}";
+    var error_payment_stripe_3d = "{{ trans('general.error_payment_stripe_3d') }}";
+    var colorStripe = {!! auth()->user()->dark_mode == 'on' ? "'#dcdcdc'" : "'#32325d'" !!};
+    var full_name_user = '{{ auth()->user()->name }}';
+    var color_default = '{{ $settings->color_default }}';
+    var formats_available_upload_file = "{{trans('general.formats_available_upload_file')}}";
+    var cancel_subscription = "{{trans('general.unsubscribe')}}";
+    var your_subscribed = "{{trans('general.your_subscribed')}}";
+    var subscription_expire = "{{trans('general.subscription_expire')}}";
+    var formats_available_verification_form_w9 = "{{trans('general.formats_available_verification_form_w9', ['formats' => 'PDF'])}}";
+    var payment_was_successful = "{{trans('general.payment_was_successful')}}";
+    var public_post = "{{trans('general.public')}}";
+    var locked_post = "{{trans('users.content_locked')}}";
+    var maximum_files_post = {{$settings->maximum_files_post}};
+    var maximum_files_msg = {{$settings->maximum_files_msg}};
+    var great = "{{trans('general.great')}}";
+    var msg_success_sent_all_subscribers = "{{trans('general.msg_success_sent_all_subscribers')}}";
+    var is_explore = {{ request()->is('explore') ? 'true' : 'false' }};
+    var video_on_way = "{{trans('general.video_on_way')}}";
+    var story_on_way = "{{trans('general.story_on_way')}}";
+    var video_processed_info = "{{trans('general.video_processed_info')}}";
+    var confirm_end_live = "{{trans('general.confirm_end_live')}}";
+    var yes_confirm_end_live = "{{trans('general.yes_confirm_end_live')}}";
+    var liveMode = false;
+    var min_width_height_image = {{ $settings->min_width_height_image }};
+    var min_width_image_error = '{{ trans('general.width_min', ['data' => $settings->min_width_height_image]) }}';
+    var decimalZero = {{ $settings->currency_code == 'JPY' ? 0 : 2 }};
+    var confirm_exit_live = "{{trans('general.confirm_exit_live')}}";
+    var yes_confirm_exit_live = "{{trans('general.yes_confirm_exit_live')}}";
+    var purchase_processed_shortly = "{{trans('general.purchase_processed_shortly')}}";
+    var confirm_reject_order = "{{ __('general.confirm_reject_order') }}";
+    var reject_order = "{{ __('general.reject_order') }}";
+    var action_cannot_reversed = "{{ __('general.action_cannot_reversed') }}";
+    var mark_as_delivered = "{{ __('general.mark_as_delivered') }}";
+    var confirm_restrict = "{{ __('general.confirm_restrict') }}";
+    var restrict = "{{ __('general.restrict') }}";
+    var remove_restriction = "{{ __('general.remove_restriction') }}";
+    var show_only_free = "{{ __('general.show_only_free') }}";
+    var show_all = "{{ __('general.show_all') }}";
+    @if ($settings->video_encoding == 'off')
+    var extensionsPostMessage = ['png','jpeg','jpg','gif','ief','video/mp4','audio/x-matroska','audio/mpeg'];
+    var extensionsStories = ['png','jpeg','jpg','gif','ief','video/mp4','audio/x-matroska','audio/mpeg'];
+    @else
+    var extensionsPostMessage = ['png','jpeg','jpg','gif','ief','video/mp4','video/quicktime','video/3gpp','video/mpeg','video/x-matroska','video/x-ms-wmv','video/vnd.avi','video/avi','video/x-flv','audio/x-matroska','audio/mpeg'];
+    var extensionsStories = ['png','jpeg','jpg','gif','ief','video/mp4','video/quicktime','video/3gpp','video/mpeg','video/x-matroska','video/x-ms-wmv','video/vnd.avi','video/avi','video/x-flv'];
+    @endif
+  @endauth
 </script>
 
 <style type="text/css">

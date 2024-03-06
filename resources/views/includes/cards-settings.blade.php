@@ -10,7 +10,7 @@
 		<div class="card shadow-sm card-settings mb-3">
 				<div class="list-group list-group-sm list-group-flush">
 
-    <small class="text-muted px-4 pt-3 text-uppercase mb-1 font-weight-bold">{{ trans('general.account') }}</small>
+    			<small class="text-muted px-4 pt-3 text-uppercase mb-1 font-weight-bold">{{ trans('general.account') }}</small>
 
 					@if (auth()->user()->verified_id == 'yes')
 					<a href="{{url('dashboard')}}" class="list-group-item list-group-item-action d-flex justify-content-between @if (request()->is('dashboard')) active @endif">
@@ -162,17 +162,7 @@
 			</div>
 	</a>
 
-	@if (auth()->user()->verified_id == 'yes')
-	<a href="{{url('block/countries')}}" class="list-group-item list-group-item-action d-flex justify-content-between @if (request()->is('block/countries')) active @endif">
-			<div>
-					<i class="bi bi-eye-slash mr-2"></i>
-					<span>{{trans('general.block_countries')}}</span>
-			</div>
-			<div>
-					<i class="feather icon-chevron-right"></i>
-			</div>
-	</a>
-@endif
+	 
 
 <a href="{{url('settings/restrictions')}}" class="list-group-item list-group-item-action d-flex justify-content-between @if (request()->is('settings/restrictions')) active @endif">
 		<div>

@@ -52,7 +52,7 @@
       @endif
   </div>
 
-  <div class="container">
+  <div class="container container-lg-3">
     <div class="row">
       
 
@@ -388,7 +388,7 @@
   </div><!-- container -->
 
   @if ($user->verified_id == 'yes' && request('media') != 'shop')
-  <div class="container py-4 pb-5">
+  <div class="container py-4 pb-5 container-lg-3">
     <div class="row">
       <div class="col-lg-4 mb-3">
         
@@ -605,7 +605,7 @@
   @endif
 
   @if ($user->verified_id == 'yes' && request('media') == 'shop')
-    <div class="container py-5">
+    <div class="container py-5 container-lg-3">
 
       @if ($userProducts->count() != 0)
       <div class="@if (auth()->check() && auth()->user()->verified_id == 'yes' && $user->id == auth()->id())d-flex justify-content-between align-items-center @else d-block @endif mb-3 text-right">
