@@ -579,9 +579,6 @@ button:active.button-search {
   text-shadow: 0 1px 4px #333333b3;
 }
 
-.navbar .container {
-  max-width: 1300px !important;
-}
 
 .navbar .nav-item {
     margin-left: 2px;
@@ -595,6 +592,14 @@ button:active.button-search {
   .py-large {padding-top:6rem!important;}
   .py-large {padding-bottom: 6rem!important;}
 }
+
+@media (min-width: 1200px) 
+{ 
+  .navbar .container {
+    max-width: 1300px;
+  }
+}
+
 /*** max-width 991 ***/
 @media (max-width: 991px) {
     .navbar .navbar-collapse { position: fixed; right: -100%; width: 100%; top: 0; height: 100%; background: #FFF; z-index: 999999; overflow-y: scroll; -webkit-transition: all 0.25s ease-out; -o-transition: all 0.25s ease-out; transition: all 0.25s ease-out; padding: 15px; }
