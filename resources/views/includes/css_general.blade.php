@@ -9,9 +9,8 @@
 <link href="{{ asset('public/css/bootstrap.min.css') }}" rel="stylesheet">
 @endif
 
-<link href="{{ asset('public/css/styles.css') }}?v={{$settings->version}}" rel="stylesheet">
-<link href="{{ asset('public/js/plyr/plyr.css')}}?v={{$settings->version}}" rel="stylesheet" type="text/css" />
-
+<link href="{{ asset('public/css/styles.css') }}?v={{$settings->version}}" rel="stylesheet"> 
+<link href="{{ asset('public/js/plyr/plyr.css')}}?v={{$settings->version}}" rel="stylesheet" type="text/css" /> 
 @auth
 <link href="{{ asset('public/js/fileuploader/font/font-fileuploader.css')}}" media="all" rel="stylesheet" type="text/css" />
 <link href="{{ asset('public/js/fileuploader/jquery.fileuploader.min.css')}}" media="all" rel="stylesheet" type="text/css" />

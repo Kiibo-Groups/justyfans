@@ -74,30 +74,30 @@
     <button class="btn btn-sm btn-primary" id="close-banner">{{trans('general.go_it')}}
     </button>
   </div>
-@endif
+  @endif
 
   <div id="mobileMenuOverlay" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"></div>
 
   @auth
     @if (! request()->is('messages/*') && ! request()->is('live/*'))
-    @include('includes.menu-mobile')
-  @endif
+      @include('includes.menu-mobile')
+    @endif
   @endauth
 
   @if ($settings->alert_adult == 'on')
     <div class="modal fade" tabindex="-1" id="alertAdult">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-body p-4">
-          <p>{{ __('general.alert_content_adult') }}</p>
-        </div>
-        <div class="modal-footer border-0 pt-0">
-          <a href="https://google.com" class="btn e-none p-0 mr-3">{{trans('general.leave')}}</a>
-          <button type="button" class="btn btn-primary" id="btnAlertAdult">{{trans('general.i_am_age')}}</button>
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-body p-4">
+            <p>{{ __('general.alert_content_adult') }}</p>
+          </div>
+          <div class="modal-footer border-0 pt-0">
+            <a href="https://google.com" class="btn e-none p-0 mr-3">{{trans('general.leave')}}</a>
+            <button type="button" class="btn btn-primary" id="btnAlertAdult">{{trans('general.i_am_age')}}</button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
   @endif
 
 
@@ -108,9 +108,10 @@
     || auth()->guest() && request()->path() != '/' && $settings->home_style == 1
     || auth()->check()
     )
-  @include('includes.navbar')
+    @include('includes.navbar')
   @endif
 
+  <div class="body-wrap">
   <main @if (request()->is('messages/*') || request()->is('live/*')) class="h-100" @endif role="main">
     @yield('content')
 
@@ -151,32 +152,33 @@
           @endif
     @endif
 
-  @guest
+    @guest
 
-  @if (Helper::showLoginFormModal())
-      @include('includes.modal-login')
+    @if (Helper::showLoginFormModal())
+        @include('includes.modal-login')
+      @endif
+
+    @endguest
+
+    @auth
+
+      @if ($settings->disable_tips == 'off')
+      @include('includes.modal-tip')
     @endif
 
-  @endguest
+      @include('includes.modal-payperview')
 
-  @auth
+      @if ($settings->live_streaming_status == 'on')
+        @include('includes.modal-live-stream')
+      @endif
+      
+    @endauth
 
-    @if ($settings->disable_tips == 'off')
-     @include('includes.modal-tip')
-   @endif
-
-    @include('includes.modal-payperview')
-
-    @if ($settings->live_streaming_status == 'on')
-      @include('includes.modal-live-stream')
-    @endif
-    
-  @endauth
-
-  @guest
-    @include('includes.modal-2fa')
-  @endguest
-</main>
+    @guest
+      @include('includes.modal-2fa')
+    @endguest
+  </main>
+  </div>
 
   @include('includes.javascript_general')
 

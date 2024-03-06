@@ -121,7 +121,7 @@ Route::get('verify/account/{confirmation_code}', [HomeController::class, 'getVer
   | Subscription
   |--------- -------------------------
   */
- Route::get('buy/subscription/success/{user}', function($user) {
+ 	Route::get('buy/subscription/success/{user}', function($user) {
 
 	 $notifyPayPal = request()->input('paypal') ? ' <br><br>'.trans('general.alert_paypal_delay') : null;
 
@@ -129,7 +129,7 @@ Route::get('verify/account/{confirmation_code}', [HomeController::class, 'getVer
 	 return redirect($user);
  	});
 
- Route::get('buy/subscription/cancel/{user}', function($user){
+ 	Route::get('buy/subscription/cancel/{user}', function($user){
 	 session()->put('subscription_cancel', trans('general.subscription_cancel'));
 	 return redirect($user);
  	});
