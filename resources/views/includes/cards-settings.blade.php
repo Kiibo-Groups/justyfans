@@ -25,6 +25,17 @@
 				</a>
 				@endif
 
+				{{-- my_page --}}
+				<a href="{{url('settings/page')}}" class="list-group-item list-group-item-action d-flex justify-content-between @if (request()->is('settings/page')) active @endif">
+					<div>
+						<i class="bi bi-pencil mr-2"></i>
+						<span>{{ auth()->user()->verified_id == 'yes' ? trans('general.my_page') : trans('users.my_profile') }}</span>
+					</div>
+					<div>
+						<i class="feather icon-chevron-right"></i>
+					</div>
+				</a>
+
 				{{-- wallet --}}
 				@if ($settings->disable_wallet == 'off')
 				<a href="{{url('my/wallet')}}" class="list-group-item list-group-item-action d-flex justify-content-between @if (request()->is('my/wallet')) active @endif">
@@ -37,27 +48,6 @@
 					</div>
 				</a>
 				@endif
-
-				{{-- my_page --}}
-				<a href="{{url(auth()->user()->username)}}" class="list-group-item list-group-item-action d-flex justify-content-between url-user">
-					<div>
-						<i class="feather icon-user mr-2"></i>
-						<span>{{ auth()->user()->verified_id == 'yes' ? trans('general.my_page') : trans('users.my_profile') }}</span>
-					</div>
-					<div>
-						<i class="feather icon-chevron-right"></i>
-					</div>
-				</a>
-
-				<a href="{{url('settings/page')}}" class="list-group-item list-group-item-action d-flex justify-content-between @if (request()->is('settings/page')) active @endif">
-					<div>
-						<i class="bi bi-pencil mr-2"></i>
-						<span>{{ auth()->user()->verified_id == 'yes' ? trans('general.edit_my_page') : trans('users.edit_profile')}}</span>
-					</div>
-					<div>
-						<i class="feather icon-chevron-right"></i>
-					</div>
-				</a>
 
 				{{-- referrals --}}
           		@if ($settings->referral_system == 'on' || auth()->user()->referrals()->count() != 0)
@@ -72,6 +62,17 @@
 				</a>
   				@endif
 
+				{{-- verify/account --}}
+				<a href="{{url('settings/verify/account')}}" class="list-group-item list-group-item-action d-flex justify-content-between @if (request()->is('settings/verify/account')) active @endif">
+					<div>
+						<i class="@if (auth()->user()->verified_id == 'yes') feather icon-check-circle @else bi-star @endif mr-2"></i>
+						<span>{{ auth()->user()->verified_id == 'yes' ? trans('general.verified_account') : trans('general.become_creator')}}</span>
+					</div>
+					<div>
+						<i class="feather icon-chevron-right"></i>
+					</div>
+				</a> 
+
 				{{-- stories --}}
 				@if ($settings->story_status && auth()->user()->verified_id == 'yes')
 				<a href="{{url('my/stories')}}" class="list-group-item list-group-item-action d-flex justify-content-between @if (request()->is('my/stories')) active @endif">
@@ -84,17 +85,6 @@
 					</div>
 				</a>
 			  	@endif
-
-				{{-- verify/account --}}
-				<a href="{{url('settings/verify/account')}}" class="list-group-item list-group-item-action d-flex justify-content-between @if (request()->is('settings/verify/account')) active @endif">
-					<div>
-						<i class="@if (auth()->user()->verified_id == 'yes') feather icon-check-circle @else bi-star @endif mr-2"></i>
-						<span>{{ auth()->user()->verified_id == 'yes' ? trans('general.verified_account') : trans('general.become_creator')}}</span>
-					</div>
-					<div>
-						<i class="feather icon-chevron-right"></i>
-					</div>
-				</a> 
 			</div>
 		</div><!-- End Account -->
 

@@ -326,9 +326,23 @@
 								{{ auth()->user()->verified_id == 'yes' ? trans('general.edit_my_page') : trans('users.edit_profile')}}
 							</a>
 
+							
+
 							@if (auth()->user()->verified_id == 'yes')
-							<a class="dropdown-item dropdown-navbar" href="{{url('dashboard')}}"><i class="bi bi-speedometer2 mr-2"></i> {{trans('admin.dashboard')}}</a>
-							<a class="dropdown-item dropdown-navbar" href="{{url('my/posts')}}"><i class="feather icon-feather mr-2"></i> {{trans('general.my_posts')}}</a>
+								<a class="dropdown-item dropdown-navbar" href="{{url('dashboard')}}">
+									<i class="bi bi-speedometer2 mr-2"></i> 
+									{{trans('admin.dashboard')}}
+								</a>
+								<a class="dropdown-item dropdown-navbar" href="{{url('my/posts')}}">
+									<i class="feather icon-feather mr-2"></i> 
+									{{trans('general.my_posts')}}
+								</a>
+								@if ($settings->story_status)
+								<a class="dropdown-item dropdown-navbar" href="{{url('my/stories')}}">
+									<i class="feather icon-clock mr-2"></i>
+									<span>{{trans('general.my_stories')}}</span>
+								</a>
+								@endif
 							@endif
 
 							<div class="dropdown-divider"></div>
@@ -340,12 +354,9 @@
 							<a class="dropdown-item dropdown-navbar" href="{{url('my/bookmarks')}}"><i class="feather icon-bookmark mr-2"></i> {{trans('general.bookmarks')}}</a>
 							<a class="dropdown-item dropdown-navbar" href="{{url('my/likes')}}"><i class="feather icon-heart mr-2"></i> {{trans('general.likes')}}</a>
 
-							@if (auth()->user()->verified_id == 'no'
-										&& auth()->user()->verified_id != 'reject'
-										&& $settings->requests_verify_account == 'on'
-										)
-								<div class="dropdown-divider"></div>
-								<a class="dropdown-item dropdown-navbar" href="{{url('settings/verify/account')}}"><i class="feather icon-star mr-2"></i> {{trans('general.become_creator')}}</a>
+							@if (auth()->user()->verified_id == 'no' && auth()->user()->verified_id != 'reject' && $settings->requests_verify_account == 'on' )
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item dropdown-navbar" href="{{url('settings/verify/account')}}"><i class="feather icon-star mr-2"></i> {{trans('general.become_creator')}}</a>
 							@endif
 
 							<div class="dropdown-divider"></div>
