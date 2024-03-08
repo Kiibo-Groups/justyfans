@@ -305,31 +305,33 @@
 		          </div>
 		        </div>
 
-						<div class="row mb-3">
+				{{-- Stripe Connect --}}
+				{{-- <div class="row mb-3">
 		          <label class="col-sm-2 col-form-labe text-lg-end">Stripe Connect</label>
 		          <div class="col-sm-10">
 		            <select name="stripe_connect" class="form-select">
-                  <option @if ($settings->stripe_connect) selected="selected" @endif value="1">{{ __('general.enabled') }}</option>
-                  <option @if (! $settings->stripe_connect) selected="selected" @endif value="0">{{ __('general.disabled') }}</option>
-                </select>
+						<option @if ($settings->stripe_connect) selected="selected" @endif value="1">{{ __('general.enabled') }}</option>
+						<option @if (! $settings->stripe_connect) selected="selected" @endif value="0">{{ __('general.disabled') }}</option>
+					</select>
 		          </div>
 		        </div>
 
-						<div class="row mb-3">
+				<div class="row mb-3">
 		          <label class="col-sm-2 col-form-labe text-lg-end">{{ trans('general.stripe_connect_countries') }}</label>
 		          <div class="col-sm-10">
 		            <select name="stripe_connect_countries[]" multiple class="form-select stripeConnectCountries">
-									@foreach (Countries::orderBy('country_name')->get() as $country)
-										<option @if (in_array($country->country_code, $stripeConnectCountries)) selected="selected" @endif value="{{$country->country_code}}">{{ $country->country_name }}</option>
-									@endforeach
-		           </select>
-							 <small class="d-block">
-								 {{ trans('general.info_stripe_connect_countries') }} <a href="https://dashboard.stripe.com/settings/connect/express" target="_blank">https://dashboard.stripe.com/settings/connect/express</a>
-							 </small>
+					@foreach (Countries::orderBy('country_name')->get() as $country)
+						<option @if (in_array($country->country_code, $stripeConnectCountries)) selected="selected" @endif value="{{$country->country_code}}">{{ $country->country_name }}</option>
+					@endforeach
+		           	</select>
+					<small class="d-block">
+						{{ trans('general.info_stripe_connect_countries') }} <a href="https://dashboard.stripe.com/settings/connect/express" target="_blank">https://dashboard.stripe.com/settings/connect/express</a>
+					</small>
 		          </div>
-		        </div>
+		        </div> --}}
 
-						<div class="row mb-3">
+
+				<div class="row mb-3">
 		          <div class="col-sm-10 offset-sm-2">
 		            <button type="submit" class="btn btn-dark mt-3 px-5">{{ __('admin.save') }}</button>
 		          </div>

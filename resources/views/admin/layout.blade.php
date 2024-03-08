@@ -387,28 +387,28 @@
                   @endif
 
                 @if (auth()->user()->hasPermission('payments'))
-              <li class="nav-item">
-                  <a href="#payments" data-bs-toggle="collapse" class="nav-link text-truncate dropdown-toggle @if (request()->is('panel/admin/payments') || request()->is('panel/admin/payments/*')) active @endif" @if (request()->is('panel/admin/payments') || request()->is('panel/admin/payments/*')) aria-expanded="true" @endif>
-                      <i class="bi-credit-card me-2"></i> {{ __('admin.payment_settings') }}
-                  </a>
-              </li><!-- /end list -->
+                <li class="nav-item">
+                    <a href="#payments" data-bs-toggle="collapse" class="nav-link text-truncate dropdown-toggle @if (request()->is('panel/admin/payments') || request()->is('panel/admin/payments/*')) active @endif" @if (request()->is('panel/admin/payments') || request()->is('panel/admin/payments/*')) aria-expanded="true" @endif>
+                        <i class="bi-credit-card me-2"></i> {{ __('admin.payment_settings') }}
+                    </a>
+                </li><!-- /end list -->
 
-              <div class="collapse w-100 ps-3 @if (request()->is('panel/admin/payments') || request()->is('panel/admin/payments/*')) show @endif" id="payments">
-                <li>
-                <a class="nav-link text-truncate @if (request()->is('panel/admin/payments')) text-white @endif" href="{{ url('panel/admin/payments') }}">
-                  <i class="bi-chevron-right fs-7 me-1"></i> {{ trans('admin.general') }}
-                  </a>
-                </li>
+                <div class="collapse w-100 ps-3 @if (request()->is('panel/admin/payments') || request()->is('panel/admin/payments/*')) show @endif" id="payments">
+                    <li>
+                    <a class="nav-link text-truncate @if (request()->is('panel/admin/payments')) text-white @endif" href="{{ url('panel/admin/payments') }}">
+                    <i class="bi-chevron-right fs-7 me-1"></i> {{ trans('admin.general') }}
+                    </a>
+                    </li>
 
-                @foreach ($paymentsGateways as $key)
-                <li>
-                <a class="nav-link text-truncate @if (request()->is('panel/admin/payments/'.$key->id.'')) text-white @endif" href="{{ url('panel/admin/payments', $key->id) }}">
-                  <i class="bi-chevron-right fs-7 me-1"></i> {{ $key->type == 'bank' ? trans('general.bank_transfer') : $key->name }}
-                  </a>
-                </li>
-              @endforeach
-              </div><!-- /end collapse settings -->
-              @endif
+                    @foreach ($paymentsGateways as $key)
+                    <li>
+                    <a class="nav-link text-truncate @if (request()->is('panel/admin/payments/'.$key->id.'')) text-white @endif" href="{{ url('panel/admin/payments', $key->id) }}">
+                    <i class="bi-chevron-right fs-7 me-1"></i> {{ $key->type == 'bank' ? trans('general.bank_transfer') : $key->name }}
+                    </a>
+                    </li>
+                    @endforeach
+                </div><!-- /end collapse settings -->
+                @endif
 
               @if (auth()->user()->hasPermission('profiles_social'))
               <li class="nav-item">

@@ -47,7 +47,7 @@ class ViewServiceProvider extends ServiceProvider
 			 $verificationRequestsCount = VerificationRequests::selectRaw('COUNT(id) as total')->whereStatus('pending')->pluck('total')->first();
 
 			 // Payment Gateways
-			 $paymentsGateways = PaymentGateways::all();
+			 $paymentsGateways = PaymentGateways::where('status',1)->get();
 
 			 // Payment Gateways Subscription, Tips, PPV
 			 $paymentGatewaysSubscription = PaymentGateways::where('enabled', '1')->whereSubscription('yes')->get();
