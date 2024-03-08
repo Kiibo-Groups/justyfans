@@ -316,9 +316,13 @@
 							<div class="dropdown-divider"></div>
 							@endif
 
-							<a class="dropdown-item dropdown-navbar url-user" href="{{url(auth()->User()->username)}}"><i class="feather icon-user mr-2"></i> {{ auth()->user()->verified_id == 'yes' ? trans('general.my_page') : trans('users.my_profile') }}</a>
+							<a class="dropdown-item dropdown-navbar url-user" href="{{url(auth()->User()->username)}}">
+								<i class="feather icon-user mr-2"></i> 
+								{{ auth()->user()->verified_id == 'yes' ? trans('general.my_page') : trans('users.my_profile') }}
+							</a>
 							
 							<a class="dropdown-item dropdown-navbar url-user" href="{{url('settings/page')}}">
+								<i class="feather icon-settings mr-2"></i> 
 								{{ auth()->user()->verified_id == 'yes' ? trans('general.edit_my_page') : trans('users.edit_profile')}}
 							</a>
 
