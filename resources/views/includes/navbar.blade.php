@@ -317,6 +317,11 @@
 							@endif
 
 							<a class="dropdown-item dropdown-navbar url-user" href="{{url(auth()->User()->username)}}"><i class="feather icon-user mr-2"></i> {{ auth()->user()->verified_id == 'yes' ? trans('general.my_page') : trans('users.my_profile') }}</a>
+							
+							<a class="dropdown-item dropdown-navbar url-user" href="{{url('settings/page')}}">
+								{{ auth()->user()->verified_id == 'yes' ? trans('general.edit_my_page') : trans('users.edit_profile')}}
+							</a>
+
 							@if (auth()->user()->verified_id == 'yes')
 							<a class="dropdown-item dropdown-navbar" href="{{url('dashboard')}}"><i class="bi bi-speedometer2 mr-2"></i> {{trans('admin.dashboard')}}</a>
 							<a class="dropdown-item dropdown-navbar" href="{{url('my/posts')}}"><i class="feather icon-feather mr-2"></i> {{trans('general.my_posts')}}</a>
@@ -351,13 +356,7 @@
 							<a class="dropdown-item dropdown-navbar" href="{{url('logout')}}"><i class="feather icon-log-out mr-2"></i> {{trans('auth.logout')}}</a>
 						</div>
 					</li>
-
-					{{-- <li class="nav-item">
-						<a class="nav-link btn-arrow btn-arrow-sm btn btn-main btn-primary pr-3 pl-3" href="{{url('settings/page')}}">
-							{{ auth()->user()->verified_id == 'yes' ? trans('general.edit_my_page') : trans('users.edit_profile')}}
-						</a>
-					</li> --}}
-
+ 
 					@endguest
 
 				</ul>
